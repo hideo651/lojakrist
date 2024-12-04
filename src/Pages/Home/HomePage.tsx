@@ -8,6 +8,7 @@ const HomePage = () => {
 
       <button onClick={() => setContagem(contagem + 1)}> Mais</button>
       <button onClick={() => setContagem(contagem - 1)}>Menos</button>
+      <p>Teste</p>
     </>
   );
 };
