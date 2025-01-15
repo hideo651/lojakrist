@@ -1,0 +1,44 @@
+.button {
+  font-size: 1rem;
+  background: #000;
+  color: white;
+  height: 56px;
+  cursor: pointer;
+  border-radius: 10px;
+  box-sizing: border-box;
+  transition: 0.1s;
+  border: 1px solid #eee;
+  width: 100%;
+  min-width: 8rem;
+}
+
+.button:hover,
+.button:focus {
+  outline: none;
+  background: white;
+  box-shadow: 0 0 0 3px #eee;
+  color: #000;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.link {
+  cursor: pointer;
+  background: black;
+  color: white;
+  padding: 10px;
+  border-radius: 0.4rem;
+  text-align: center;
+  transition: 0.1s;
+}
+
+.link:hover,
+.link:focus {
+  outline: none;
+  background: white;
+  box-shadow: 0 0 0 3px #eee;
+  color: #000;
+}

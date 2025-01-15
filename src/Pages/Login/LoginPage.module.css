@@ -1,0 +1,62 @@
+.section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.section p {
+  margin-bottom: 30px;
+}
+
+.cadastro {
+  padding: 100px 10px 0 10px;
+  width: 445px;
+}
+
+.perdeu {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: inline-block;
+  color: #666;
+  padding: 0.5rem 0;
+  line-height: 1;
+}
+
+.perdeu::after {
+  content: "";
+  height: 2px;
+  width: 100%;
+  background: currentColor;
+  display: block;
+}
+h1 {
+  margin-bottom: 30px;
+}
+
+.link {
+  cursor: pointer;
+  background: black;
+  color: white;
+  padding: 10px;
+  border-radius: 0.4rem;
+  text-align: center;
+  transition: 0.1s;
+}
+
+.link:hover,
+.link:focus {
+  outline: none;
+  background: white;
+  box-shadow: 0 0 0 3px #eee;
+  color: #000;
+}
+
+@media (max-width: 900px) {
+  .section {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .section img {
+    display: none;
+  }
+}
