@@ -4,6 +4,7 @@ import LoginPage from "../Pages/Login/LoginPage";
 import SignupPage from "../Pages/Signup/SignupPage";
 import ShopPage from "../Pages/Shop/ShopPage";
 import NotFoundPage from "../Pages/NotFound/NotFoundPage";
+import ForgotPage from "../Pages/Forgot/ForgotPage";
 
 const MainRoutes = () => {
   return (
@@ -13,6 +14,7 @@ const MainRoutes = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/cadastro" element={<SignupPage />} />
         <Route path="/produtos" element={<ShopPage />} />
+        <Route path="/esqueci" element={<ForgotPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>

@@ -1,0 +1,20 @@
+.section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.esqueci {
+  padding: 100px 10px 0px 10px;
+  width: 445px;
+}
+
+@media (max-width: 900px) {
+  .section {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .section img {
+    display: none;
+  }
+}

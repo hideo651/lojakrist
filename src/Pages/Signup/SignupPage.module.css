@@ -1,0 +1,24 @@
+.section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.registro {
+  padding: 100px 10px 0 10px;
+  width: 445px;
+}
+
+h1 {
+  margin-bottom: 30px;
+}
+
+@media (max-width: 900px) {
+  .section {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .section img {
+    display: none;
+  }
+}

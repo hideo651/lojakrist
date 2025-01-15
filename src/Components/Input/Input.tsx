@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./Input.module.css";
-import { FieldError, Merge, FieldErrorsImpl } from "react-hook-form";
 
 type IDataInput = React.ComponentProps<"input"> & {
   label: string;

@@ -8,13 +8,13 @@ const LoginPage = () => {
   return (
     <>
       <Header />
-      <section className={styles.section}>
+      <section className={`${styles.section} animeLeft`}>
         <div>
           <img src={Foto} alt="" />
         </div>
         <div className={styles.cadastro}>
           <LoginForm />
-          <Link className={styles.perdeu} to="/forgot">
+          <Link className={styles.perdeu} to="/esqueci">
             Perdeu a senha ?
           </Link>
           <div>

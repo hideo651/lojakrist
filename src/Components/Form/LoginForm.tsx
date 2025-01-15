@@ -11,11 +11,11 @@ const loginSchema = z.object({
   password: z.string().min(1, { message: "Digite uma senha válida" }),
 });
 
-type ILogin = {
+interface ILogin {
   error: string;
   email: string;
   password: string;
-};
+}
 
 const LoginForm = () => {
   const [loading, setLoading] = React.useState(false);
@@ -29,7 +29,7 @@ const LoginForm = () => {
     resolver: zodResolver(loginSchema),
   });
 
-  function handleForm(data: any) {
+  const handleForm = (data: any) => {
     setLoading(true);
     setTimeout(() => {
       setLoading(true);
@@ -37,7 +37,7 @@ const LoginForm = () => {
       navigate("/");
     }, 2000);
     // setTimeout é apenas para simular uma interação com a API
-  }
+  };
   return (
     <>
       <form onSubmit={handleSubmit(handleForm)}>
