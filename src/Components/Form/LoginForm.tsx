@@ -1,43 +1,36 @@
-import React from "react";
 import Input from "../Input/Input";
-import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Button from "../Button/Button";
+import { useUi } from "../../UiContext";
 
 const loginSchema = z.object({
   email: z.string().email({ message: "Digite um email válido" }),
   password: z.string().min(1, { message: "Digite uma senha válida" }),
 });
 
-interface ILogin {
+interface ILoginForm {
   error: string;
   email: string;
   password: string;
 }
 
 const LoginForm = () => {
-  const [loading, setLoading] = React.useState(false);
+  const { userLogin, loading } = useUi();
 
-  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ILogin>({
+  } = useForm<ILoginForm>({
     resolver: zodResolver(loginSchema),
   });
 
   const handleForm = (data: any) => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(true);
-      console.log(data);
-      navigate("/");
-    }, 2000);
-    // setTimeout é apenas para simular uma interação com a API
+    userLogin(data);
   };
+
   return (
     <>
       <form onSubmit={handleSubmit(handleForm)}>

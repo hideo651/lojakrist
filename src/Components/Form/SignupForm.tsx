@@ -5,6 +5,7 @@ import { z } from "zod";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useUi } from "../../UiContext";
 
 const formSchema = z
   .object({
@@ -29,8 +30,7 @@ interface ISignUp {
 }
 
 const SignupForm = () => {
-  const [loading, setLoading] = React.useState(false);
-  const navigate = useNavigate();
+  const { userRegister, loading } = useUi();
 
   const {
     register,
@@ -39,12 +39,8 @@ const SignupForm = () => {
   } = useForm<ISignUp>({ resolver: zodResolver(formSchema) });
 
   const onSubmit = (data: ISignUp) => {
-    setLoading(true);
-    setTimeout(() => {
-      console.log(data);
-      navigate("/login");
-    }, 2000);
-    // setTimeout é apenas para simular uma interação com a API
+    const { confirm, error, ...formData } = data;
+    userRegister(formData);
   };
 
   return (
