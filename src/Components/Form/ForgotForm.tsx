@@ -29,7 +29,6 @@ const ForgotForm = () => {
   const onSubmit = (data: IForgot) => {
     setLoading(true);
     setTimeout(() => {
-      console.log(data);
       navigate("/");
     }, 2000);
     // setTimeout é apenas para simular uma interação com a API

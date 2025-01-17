@@ -8,8 +8,10 @@ interface IUiContext {
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   login: boolean | null;
+  data: IDataRegister;
   userLogin: (data: IDataLogin) => void;
   userRegister: (data: IDataRegister) => void;
+  userLogout: () => void;
 }
 
 interface IDataLogin {
@@ -33,7 +35,12 @@ export const useUi = () => {
 };
 
 export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
-  const [data, setData] = React.useState({});
+  const [data, setData] = React.useState<IDataRegister>({
+    name: "",
+    lastname: "",
+    email: "",
+    password: "",
+  });
   const [contagem, setContagem] = React.useState(0);
   const [loading, setLoading] = React.useState(false);
   const [login, setLogin] = React.useState<boolean | null>(null);
@@ -42,10 +49,6 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
 
   const userLogin = (data: IDataLogin) => {
     const user: IDataRegister = JSON.parse(localStorage.getItem("@user")!);
-
-    if (user === null) {
-      console.log("não existe");
-    }
 
     setLoading(true);
 
@@ -59,10 +62,9 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
         navigate("/");
         setLogin(true);
         setData(user);
-        console.log("Login realizado com sucesso");
+
         localStorage.setItem("@token", JSON.stringify("123tokenfake"));
       } else {
-        console.log("Senha ou email inválido");
         setLoading(false);
         const notify = () => toast.error("Email ou senha inválidos");
         notify();
@@ -72,17 +74,21 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
   };
 
   const userRegister = (data: IDataRegister) => {
-    console.log(data, "Registro");
     localStorage.setItem("@user", JSON.stringify(data));
     setLoading(true);
     setTimeout(() => {
-      console.log(data);
+      setLoading(false);
       navigate("/login");
     }, 1500);
     // setTimeout é apenas para simular uma interação com a API
   };
 
-  console.log(login);
+  const userLogout = () => {
+    console.log("clicou");
+    localStorage.removeItem("@token");
+    setData({ name: "", lastname: "", email: "", password: "" });
+    navigate("/");
+  };
 
   React.useEffect(() => {
     async function autoLogin() {
@@ -109,6 +115,8 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
         loading,
         setLoading,
         login,
+        data,
+        userLogout,
       }}
     >
       {children}

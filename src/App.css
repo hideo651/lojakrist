@@ -34,6 +34,10 @@ img {
   max-width: 100%;
 }
 
+button {
+  font-family: "Jost", sans-serif;
+}
+
 .container {
   max-width: 75rem;
   padding: 0 10px 0 10px;

@@ -9,7 +9,7 @@
 
 .cadastro {
   padding: 100px 10px 0 10px;
-  width: 445px;
+  max-width: 445px;
 }
 
 .perdeu {

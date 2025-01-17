@@ -39,6 +39,17 @@
   width: 100%;
 }
 
+.btnLogout {
+  border: none;
+  outline: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
 .button {
   display: flex;
   align-items: center;
@@ -101,12 +112,18 @@
 }
 
 .listaMobileActive {
-  transition: 0.3s;
-  transition: initial;
+  transition: 0.2s;
+  transform: initial;
   pointer-events: initial;
   opacity: 1;
 }
 
 .listaMobileActive li {
   margin-bottom: 10px;
+}
+
+.listUser {
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
