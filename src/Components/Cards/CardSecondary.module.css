@@ -1,0 +1,13 @@
+.cardImg {
+  width: 200px;
+  background: #f7f7f7;
+  height: 300px;
+  border-radius: 8px;
+}
+
+.cardImg img {
+  width: 100%;
+  border-radius: 8px;
+  height: 100%;
+  object-fit: cover;
+}

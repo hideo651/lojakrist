@@ -7,6 +7,7 @@ import NotFoundPage from "../Pages/NotFound/NotFoundPage";
 import ForgotPage from "../Pages/Forgot/ForgotPage";
 import ProfilePage from "../Pages/Profile/ProfilePage";
 import ProtectedRoute from "../Helper/ProtectedRoute";
+import ProductPage from "../Pages/Product/ProductPage";
 
 const MainRoutes = () => {
   return (
@@ -17,6 +18,7 @@ const MainRoutes = () => {
         <Route path="/cadastro" element={<SignupPage />} />
         <Route path="/produtos" element={<ShopPage />} />
         <Route path="/esqueci" element={<ForgotPage />} />
+        <Route path="/produto/:productId" element={<ProductPage />} />
         <Route
           path="/conta"
           element={

@@ -1,15 +1,20 @@
+import { ReactNode } from "react";
 import { Navigate } from "react-router-dom";
 import { useUi } from "../UiContext";
 
-const ProtectedRoute = ({ children }: any) => {
+interface ProtectedRouteProps {
+  children: ReactNode;
+}
+
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const { login } = useUi();
 
   if (login === true) {
-    return children;
+    return <>{children}</>;
   } else if (login === false) {
     return <Navigate to="/" />;
   } else {
-    return <></>;
+    return null; // Use null para representar nenhum conteúdo
   }
 };
 

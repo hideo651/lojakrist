@@ -1,0 +1,42 @@
+.categoria {
+  padding: 0px 30px 0px 30px;
+}
+
+.categoria ul {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  white-space: nowrap;
+  overflow-x: auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.categoria ul li {
+  position: relative;
+}
+
+.categoria ul li span {
+  background: rgba(255, 255, 255, 0.8);
+  width: 150px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  bottom: 20px;
+  position: absolute;
+  left: 25px;
+}
+
+.produtosList {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.produtosList li {
+  background: palevioletred;
+  width: 200px;
+}

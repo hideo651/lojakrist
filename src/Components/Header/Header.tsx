@@ -68,12 +68,12 @@ const Header = () => {
                   Sair
                 </button>
               ) : (
-                <div>
+                <>
                   <ButtonCart />
                   <Link to="/conta">
                     <FaRegUser size={20} />
                   </Link>
-                </div>
+                </>
               )}
             </div>
           ) : (
