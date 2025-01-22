@@ -4,7 +4,7 @@ export const Data = [
   {
     id: 1,
     nome: "Jaqueta Azul",
-    preco: 40,
+    preco: 39.99,
     categoria: "jaqueta",
     intro: "Lorem ipsum dolor, set",
     descricao:
@@ -14,7 +14,7 @@ export const Data = [
   {
     id: 2,
     nome: "Casaco Azul",
-    preco: 100,
+    preco: 99.99,
     categoria: "casaco",
     intro: "Lorem ipsum dolor, set",
     descricao:
@@ -24,7 +24,7 @@ export const Data = [
   {
     id: 3,
     nome: "Vestido Colorido",
-    preco: 40,
+    preco: 39.99,
     categoria: "vestido",
     intro: "Lorem ipsum dolor, set",
     descricao:
@@ -34,7 +34,7 @@ export const Data = [
   {
     id: 4,
     nome: "Moletom Branco",
-    preco: 40,
+    preco: 199.99,
     categoria: "moletom",
     intro: "Lorem ipsum dolor, set",
     descricao:
@@ -44,7 +44,7 @@ export const Data = [
   {
     id: 5,
     nome: "Bermuda verde",
-    preco: 75,
+    preco: 74.99,
     categoria: "bermuda",
     intro: "Calça estilosa com ajuste perfeito",
     descricao:
@@ -54,7 +54,7 @@ export const Data = [
   {
     id: 6,
     nome: "Bermuda beje",
-    preco: 45,
+    preco: 45.99,
     categoria: "bermuda",
     intro: "Calça estilosa com ajuste perfeito",
     descricao:
@@ -64,7 +64,7 @@ export const Data = [
   {
     id: 7,
     nome: "Jaqueta amarela",
-    preco: 45,
+    preco: 249.99,
     categoria: "jaqueta",
     intro: "Calça estilosa com ajuste perfeito",
     descricao:
@@ -74,7 +74,7 @@ export const Data = [
   {
     id: 8,
     nome: "Calça Feminina",
-    preco: 45,
+    preco: 119.99,
     categoria: "calça",
     intro: "Calça estilosa com ajuste perfeito",
     descricao:

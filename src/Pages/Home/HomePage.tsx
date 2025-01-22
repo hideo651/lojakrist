@@ -39,6 +39,7 @@ const HomePage = () => {
           </ul>
         </section>
         <section className={styles.produtos}>
+          <h2 className="title">Produtos mais vendidos</h2>
           <ul className={styles.produtosList}>
             {Data.map((dados) => {
               return (

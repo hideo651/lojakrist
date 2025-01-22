@@ -3,13 +3,10 @@
 }
 
 .categoria ul {
-  display: flex;
-  justify-content: space-between;
-  gap: 30px;
-  white-space: nowrap;
-  overflow-x: auto;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
 }
 
 .categoria ul li {
@@ -27,16 +24,57 @@
   left: 25px;
 }
 
+.produtos {
+  margin-top: 30px;
+  padding: 0px 30px 0px 30px;
+}
+
 .produtosList {
-  display: flex;
-  justify-content: space-between;
-  gap: 30px;
-  flex-wrap: wrap;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
 }
 
 .produtosList li {
-  background: palevioletred;
-  width: 200px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: 0.2s;
+  padding: 5px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+}
+
+.produtosList li:hover {
+  border: 2px solid grey;
+}
+
+@media (max-width: 1210px) {
+  .produtosList {
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    gap: 0;
+  }
+
+  .categoria ul {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 900px) {
+  .categoria ul {
+    display: flex;
+    gap: 30px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 800px) {
+  .produtosList {
+    display: flex;
+    gap: 30px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
 }

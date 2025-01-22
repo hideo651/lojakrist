@@ -1,3 +1,38 @@
-/* .card {
+.card {
   width: 200px;
-} */
+}
+
+.divImg {
+  width: 100%;
+  background: #f7f7f7;
+  height: 300px;
+  border-radius: 8px;
+}
+
+.divImg img {
+  width: 100%;
+  border-radius: 8px;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-weight: bold;
+}
+
+.cardInfo :nth-child(3) {
+  font-size: 0.8rem;
+  font-weight: lighter;
+}
+
+.spanPrimary {
+  color: grey;
+}
+
+.spanSecondary {
+  color: black;
+  font-weight: bold;
+}
