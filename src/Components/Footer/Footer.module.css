@@ -1,0 +1,43 @@
+.footer {
+  margin-top: 200px;
+  background: #3e3e3e;
+  color: white;
+}
+
+.footer a {
+  margin-top: 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.footerInfo svg * {
+  fill: white;
+}
+
+.footerInfo p {
+  padding-bottom: 5px;
+}
+
+.footerInfo p:nth-child(2) {
+  padding-top: 20px;
+}
+
+.footerDiv {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+}
+
+@media (max-width: 720px) {
+  .footer {
+    margin-top: 100px;
+  }
+}
+
+@media (max-width: 680px) {
+  .footerDiv {
+    flex-direction: column;
+  }
+}

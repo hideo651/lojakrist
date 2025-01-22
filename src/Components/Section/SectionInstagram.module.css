@@ -1,0 +1,52 @@
+.section h2 {
+  padding-top: 30px;
+  text-align: center;
+}
+
+.fotosList {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.foto {
+  width: 300px;
+  display: grid;
+  cursor: pointer;
+}
+
+.foto img {
+  grid-area: 1/1;
+}
+
+.foto span {
+  grid-area: 1 / 1;
+  background: rgba(0, 0, 0, 0.3);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  opacity: 0;
+  transition: opacity 1s;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.foto:hover span,
+.foto:focus span {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media (max-width: 900px) {
+  .fotosList {
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 650px) {
+  .foto {
+    width: 270px;
+  }
+}

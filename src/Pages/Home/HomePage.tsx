@@ -10,6 +10,10 @@ import Modelo04 from "../../assets/modelo04.svg";
 import { Data } from "../../FakeApi";
 import { Link } from "react-router-dom";
 import CardPrimary from "../../Components/Cards/CardPrimary";
+import SectionComments from "../../Components/Section/SectionComments";
+import SectionInstagram from "../../Components/Section/SectionInstagram";
+import SectionSupport from "../../Components/Section/SectionSupport";
+import Footer from "../../Components/Footer/Footer";
 
 const HomePage = () => {
   return (
@@ -58,7 +62,11 @@ const HomePage = () => {
             })}
           </ul>
         </section>
+        <SectionComments />
+        <SectionInstagram />
+        <SectionSupport />
       </main>
+      <Footer />
     </>
   );
 };
