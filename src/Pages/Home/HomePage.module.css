@@ -39,14 +39,6 @@
 .produtosList li {
   cursor: pointer;
   margin-bottom: 20px;
-  transition: 0.2s;
-  padding: 5px;
-  border: 2px solid transparent;
-  border-radius: 8px;
-}
-
-.produtosList li:hover {
-  border: 2px solid grey;
 }
 
 @media (max-width: 1210px) {

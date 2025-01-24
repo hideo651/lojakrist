@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Data } from "./FakeApi";
 
 interface IUiContext {
   contagem: number;
@@ -12,6 +13,8 @@ interface IUiContext {
   userLogin: (data: IDataLogin) => void;
   userRegister: (data: IDataRegister) => void;
   userLogout: () => void;
+  produtos: IDataProducts[];
+  setProdutos: React.Dispatch<React.SetStateAction<IDataProducts[]>>;
 }
 
 interface IDataLogin {
@@ -24,6 +27,16 @@ interface IDataRegister {
   lastname: string;
   email: string;
   password: string;
+}
+
+export interface IDataProducts {
+  id: number;
+  nome: string;
+  preco: number;
+  categoria: string;
+  intro: string;
+  descricao: string;
+  img: string;
 }
 
 const UiContext = React.createContext<IUiContext | null>(null);
@@ -44,6 +57,7 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
   const [contagem, setContagem] = React.useState(0);
   const [loading, setLoading] = React.useState(false);
   const [login, setLogin] = React.useState<boolean | null>(null);
+  const [produtos, setProdutos] = React.useState(Data);
 
   const navigate = useNavigate();
 
@@ -117,6 +131,8 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
         login,
         data,
         userLogout,
+        produtos,
+        setProdutos,
       }}
     >
       {children}

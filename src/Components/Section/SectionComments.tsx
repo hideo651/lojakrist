@@ -36,9 +36,9 @@ const SectionComments = () => {
               })}
             </div>
             <p>
-              "Além de uma coleção incrível, o atendimento aqui é impecável. A
-              equipe é super atenciosa e sempre pronta para ajudar a encontrar a
-              peça ideal!"
+              "Além de uma coleção incrível, o atendimento aqui é impecável, o
+              prazo de entrega é muito rápido. A equipe é super atenciosa e
+              sempre pronta para ajudar a encontrar a peça ideal!"
             </p>
             <div className={styles.comentariosInfo}>
               <div className={styles.usuarioFoto}>

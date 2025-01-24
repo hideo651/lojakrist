@@ -2,8 +2,7 @@ import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Data } from "../../FakeApi";
 import Header from "../../Components/Header/Header";
-import { HiH1 } from "react-icons/hi2";
-import { DiVim } from "react-icons/di";
+import SectionProductBuy from "../../Components/Section/SectionProductBuy";
 
 const ProductPage = () => {
   const { productId } = useParams();
@@ -16,9 +15,15 @@ const ProductPage = () => {
       <Header />
       <main className="container">
         {produto ? (
-          <div>
-            <h1>Página do Produto {produto?.nome}</h1>
-          </div>
+          <SectionProductBuy
+            id={produto.id}
+            nome={produto.nome}
+            preco={produto.preco}
+            categoria={produto.categoria}
+            intro={produto.intro}
+            descricao={produto.descricao}
+            img={produto.img}
+          />
         ) : (
           <div>
             <h1>Página do Produto {productId} não existe</h1>
