@@ -1,6 +1,7 @@
 import { FaStar } from "react-icons/fa";
 import styles from "./SectionProductBuy.module.css";
 import { IDataProducts } from "../../UiContext";
+import FormAddProduct from "../Form/FormAddProduct";
 
 const SectionProductBuy = (produto: IDataProducts) => {
   return (
@@ -29,12 +30,8 @@ const SectionProductBuy = (produto: IDataProducts) => {
           <span>5.0(120 Avaliações)</span>
         </div>
         <p>R$ {produto.preco}</p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-          dolorum pariatur aperiam ullam odit reiciendis obcaecati, qui aliquid,
-          molestias voluptatem ad voluptate, quod repudiandae saepe dignissimos
-          commodi repellat ducimus rerum?
-        </p>
+        <p>{produto.descricao}</p>
+        <FormAddProduct product={produto} />
       </div>
     </section>
   );

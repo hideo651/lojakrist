@@ -15,6 +15,9 @@ interface IUiContext {
   userLogout: () => void;
   produtos: IDataProducts[];
   setProdutos: React.Dispatch<React.SetStateAction<IDataProducts[]>>;
+  carrinho: IDataCartProduct[];
+  setCarrinho: React.Dispatch<React.SetStateAction<IDataCartProduct[]>>;
+  addProduct: (data: IDataCartProduct) => void;
 }
 
 interface IDataLogin {
@@ -27,6 +30,13 @@ interface IDataRegister {
   lastname: string;
   email: string;
   password: string;
+}
+
+export interface IDataCartProduct {
+  quantidade: number;
+  cor: string;
+  tamanho: string;
+  nome: string;
 }
 
 export interface IDataProducts {
@@ -58,6 +68,7 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
   const [loading, setLoading] = React.useState(false);
   const [login, setLogin] = React.useState<boolean | null>(null);
   const [produtos, setProdutos] = React.useState(Data);
+  const [carrinho, setCarrinho] = React.useState<IDataCartProduct[]>([]);
 
   const navigate = useNavigate();
 
@@ -104,6 +115,30 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
     navigate("/");
   };
 
+  const addProduct = (data: IDataCartProduct) => {
+    console.log("fui chamado");
+    // Verifica se o produto já existe no carrinho
+    const findProduct = carrinho.find((e) => e.nome === data.nome);
+    const productIndex = carrinho.findIndex((e) => e.nome === data.nome);
+
+    if (findProduct) {
+      // Se o produto já existir, atualiza a quantidade
+      const updatedProduct = {
+        ...findProduct,
+        quantidade: findProduct.quantidade + data.quantidade, // Atualiza a quantidade
+      };
+
+      // Atualiza o estado do carrinho com o produto atualizado
+      const updatedCart = [...carrinho];
+      updatedCart[productIndex] = updatedProduct;
+
+      setCarrinho(updatedCart);
+    } else {
+      // Se o produto não existir, adiciona ao carrinho
+      setCarrinho([...carrinho, data]);
+    }
+  };
+
   React.useEffect(() => {
     async function autoLogin() {
       const token = localStorage.getItem("@token");
@@ -133,6 +168,9 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
         userLogout,
         produtos,
         setProdutos,
+        carrinho,
+        setCarrinho,
+        addProduct,
       }}
     >
       {children}

@@ -15,15 +15,17 @@ const ProductPage = () => {
       <Header />
       <main className="container">
         {produto ? (
-          <SectionProductBuy
-            id={produto.id}
-            nome={produto.nome}
-            preco={produto.preco}
-            categoria={produto.categoria}
-            intro={produto.intro}
-            descricao={produto.descricao}
-            img={produto.img}
-          />
+          <>
+            <SectionProductBuy
+              id={produto.id}
+              nome={produto.nome}
+              preco={produto.preco}
+              categoria={produto.categoria}
+              intro={produto.intro}
+              descricao={produto.descricao}
+              img={produto.img}
+            />
+          </>
         ) : (
           <div>
             <h1>Página do Produto {productId} não existe</h1>
