@@ -37,8 +37,7 @@
   cursor: pointer;
 }
 
-.tamanhoList button:hover,
-.tamanhoList button:focus {
+.tamanhoList button:hover {
   background: black;
   color: white;
 }
@@ -60,11 +59,6 @@
   border: 1px solid black;
   border-radius: 8px;
 }
-
-/* .amount input {
-  width: 20px;
-  border: none;
-} */
 
 .amount button {
   padding: 0 10px 0 10px;

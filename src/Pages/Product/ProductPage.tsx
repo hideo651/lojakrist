@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Data } from "../../FakeApi";
 import Header from "../../Components/Header/Header";
 import SectionProductBuy from "../../Components/Section/SectionProductBuy";
+import SectionProductInfo from "../../Components/Section/SectionProductInfo";
+import Footer from "../../Components/Footer/Footer";
 
 const ProductPage = () => {
   const { productId } = useParams();
@@ -25,6 +27,7 @@ const ProductPage = () => {
               descricao={produto.descricao}
               img={produto.img}
             />
+            <SectionProductInfo />
           </>
         ) : (
           <div>
@@ -32,6 +35,7 @@ const ProductPage = () => {
           </div>
         )}
       </main>
+      <Footer />
     </>
   );
 };

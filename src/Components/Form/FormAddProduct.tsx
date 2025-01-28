@@ -1,10 +1,12 @@
 import React from "react";
 import styles from "./FormAddProduct.module.css";
-import { IDataCartProduct, IDataProducts, useUi } from "../../UiContext";
+
+import { useUi } from "../../UiContext";
 import { GrSubtract } from "react-icons/gr";
 import { IoAddOutline } from "react-icons/io5";
 import Button from "../Button/Button";
 import { useForm } from "react-hook-form";
+import { IDataCartProduct, IDataProducts } from "../../Interfaces";
 
 interface IFormAddProductProps {
   product: IDataProducts; // O produto é passado como um objeto
@@ -60,15 +62,19 @@ const FormAddProduct: React.FC<IFormAddProductProps> = ({ product }) => {
       </div>
       <h3>Tamanhos</h3>
       <div className={styles.tamanhoList}>
-        {tamanhos.map((tamanho, index) => (
+        {tamanhos.map((e, index) => (
           <button
+            style={{
+              background: tamanho === e ? "black" : undefined,
+              color: tamanho === e ? "white" : undefined,
+            }}
             type="button"
             key={index}
             className={styles.sizeButton}
-            aria-pressed={tamanho === tamanho}
-            onClick={() => setValue("tamanho", tamanho)}
+            aria-pressed={e === e}
+            onClick={() => setValue("tamanho", e)}
           >
-            {tamanho}
+            {e}
           </button>
         ))}
       </div>

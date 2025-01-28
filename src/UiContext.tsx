@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { Data } from "./FakeApi";
+import { Comments, Data } from "./FakeApi";
+import { IDataCartProduct, IDataComments, IDataProducts } from "./Interfaces";
 
 interface IUiContext {
   contagem: number;
@@ -18,6 +19,9 @@ interface IUiContext {
   carrinho: IDataCartProduct[];
   setCarrinho: React.Dispatch<React.SetStateAction<IDataCartProduct[]>>;
   addProduct: (data: IDataCartProduct) => void;
+  comentarios: IDataComments[];
+  setComentarios: React.Dispatch<React.SetStateAction<IDataComments[]>>;
+  addComment: (data: IDataComments) => void;
 }
 
 interface IDataLogin {
@@ -30,23 +34,6 @@ interface IDataRegister {
   lastname: string;
   email: string;
   password: string;
-}
-
-export interface IDataCartProduct {
-  quantidade: number;
-  cor: string;
-  tamanho: string;
-  nome: string;
-}
-
-export interface IDataProducts {
-  id: number;
-  nome: string;
-  preco: number;
-  categoria: string;
-  intro: string;
-  descricao: string;
-  img: string;
 }
 
 const UiContext = React.createContext<IUiContext | null>(null);
@@ -68,6 +55,7 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
   const [loading, setLoading] = React.useState(false);
   const [login, setLogin] = React.useState<boolean | null>(null);
   const [produtos, setProdutos] = React.useState(Data);
+  const [comentarios, setComentarios] = React.useState(Comments);
   const [carrinho, setCarrinho] = React.useState<IDataCartProduct[]>([]);
 
   const navigate = useNavigate();
@@ -139,6 +127,11 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
     }
   };
 
+  const addComment = (data: IDataComments) => {
+    console.log(data);
+    setComentarios([...comentarios, data]);
+  };
+
   React.useEffect(() => {
     async function autoLogin() {
       const token = localStorage.getItem("@token");
@@ -171,6 +164,9 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
         carrinho,
         setCarrinho,
         addProduct,
+        comentarios,
+        setComentarios,
+        addComment,
       }}
     >
       {children}

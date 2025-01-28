@@ -1,7 +1,8 @@
 import { FaStar } from "react-icons/fa";
 import styles from "./SectionProductBuy.module.css";
-import { IDataProducts } from "../../UiContext";
+
 import FormAddProduct from "../Form/FormAddProduct";
+import { IDataProducts } from "../../Interfaces";
 
 const SectionProductBuy = (produto: IDataProducts) => {
   return (

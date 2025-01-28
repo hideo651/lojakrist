@@ -82,3 +82,22 @@ export const Data = [
     img: Foto,
   },
 ];
+
+export const Comments = [
+  {
+    nome: "Lucas Simão",
+    titulo: "Produto muito bom !!!",
+    comentario:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto placeat vero ipsa, mollitia officia quidem aspernatur modi eligendi saepe animi natus illo dolores quisquam quam dicta, fugit ea consectetur illum.",
+    data: "22/05/2024",
+    img: "https://images.stockcake.com/public/3/8/d/38dd7933-24d1-4e77-b72d-6b8b18463230_large/mountain-selfie-adventure-stockcake.jpg",
+  },
+  {
+    nome: "Júlia Soares",
+    titulo: "Um ótimo presente para os filhos !!!",
+    comentario:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto placeat vero ipsa, mollitia officia quidem aspernatur modi eligendi saepe animi natus illo dolores quisquam quam dicta, fugit ea consectetur illum.",
+    data: "22/05/2024",
+    img: "https://images.stockcake.com/public/6/c/d/6cdd8d98-8009-47b5-a31a-b2ac887bb712_large/elegant-senior-woman-stockcake.jpg",
+  },
+];

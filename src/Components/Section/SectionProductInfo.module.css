@@ -1,0 +1,53 @@
+.btnList {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: flex;
+  gap: 40px;
+}
+
+.btnList button {
+  background: white;
+  border: 4px solid transparent;
+  font-size: 1.5rem;
+
+  font-weight: bold;
+  padding: 0;
+  cursor: pointer;
+}
+
+.btnInativo {
+  color: #787878;
+}
+
+.infoAtivo {
+  display: block;
+}
+
+.infoInativo {
+  display: none;
+}
+
+.descricaoAtivo {
+  display: block;
+}
+
+.descricaoInativo {
+  display: none;
+}
+
+.commentAtivo {
+  display: block;
+}
+
+.commentInativo {
+  display: none;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+}
+
+.info span {
+  font-weight: bold;
+}
