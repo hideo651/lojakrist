@@ -1,27 +1,55 @@
 import styles from "./ProfilePage.module.css";
 import Header from "../../Components/Header/Header";
+import Sidenav from "../../Components/Sidenav/Sidenav";
 import React from "react";
-import Button from "../../Components/Button/Button";
 
 const ProfilePage = () => {
-  const [click, setClck] = React.useState(false);
-
-  const handleClick = () => {
-    setClck(!click);
-    console.log("teste");
-  };
-
-  console.log(click);
+  const [showSection, setShowSection] = React.useState("usuario");
   return (
     <>
       <Header />
       <main className="container">
-        <h1 className={styles.h1}>Eu sou o profile</h1>
-        <div className={click ? styles.teste : styles.nada}>
-          <h1>OLÁ MUNDO</h1>
+        <h1>Meu Perfil</h1>
+        <div className={styles.profile}>
+          <Sidenav showSection={showSection} setShowSection={setShowSection} />
+          <div className={styles.profileInfo}>
+            {showSection === "usuario" ? (
+              <div>
+                <h1>{showSection}</h1>
+              </div>
+            ) : (
+              <></>
+            )}
+            {showSection === "pedidos" ? (
+              <div>
+                <h1>{showSection}</h1>
+              </div>
+            ) : (
+              <></>
+            )}
+            {showSection === "carrinho" ? (
+              <div>
+                <h1>{showSection}</h1>
+              </div>
+            ) : (
+              <></>
+            )}
+            {showSection === "endereço" ? (
+              <div>
+                <h1>{showSection}</h1>
+              </div>
+            ) : (
+              <></>
+            )}
+            {showSection === "cartão" ? (
+              <div>
+                <h1>{showSection}</h1>
+              </div>
+            ) : (
+              <></>
+            )}
+          </div>
         </div>
-
-        <Button onClick={handleClick}>Clique aqui</Button>
       </main>
     </>
   );

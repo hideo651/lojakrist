@@ -1,0 +1,40 @@
+.sidenav {
+  border: 1px solid #d3d3d3;
+}
+
+.profile {
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+  border-bottom: 1px solid #d3d3d3;
+  margin-bottom: 20px;
+}
+
+.foto img {
+  width: 50px;
+  border-radius: 50%;
+}
+
+.btnList {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.btnList li button {
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  padding: 10px 10px 10px 10px;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: 0.2s;
+}
+
+.btnList li button:hover {
+  background: black;
+  color: white;
+}
