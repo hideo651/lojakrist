@@ -1,0 +1,9 @@
+.teste {
+  transition: 0.2s;
+  color: red;
+}
+
+.nada {
+  transition: 0.2s;
+  color: black;
+}

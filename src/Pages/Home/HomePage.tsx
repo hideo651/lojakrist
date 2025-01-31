@@ -45,7 +45,7 @@ const HomePage = () => {
         <section className={styles.produtos}>
           <h2 className="title">Produtos mais vendidos</h2>
           <ul className={styles.produtosList}>
-            {Data.map((dados) => {
+            {Data.slice(0, 8).map((dados) => {
               return (
                 <li key={dados.id}>
                   <Link to={`/produto/${dados.id}`} className={styles.link}>

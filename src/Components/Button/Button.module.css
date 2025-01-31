@@ -12,8 +12,7 @@
   min-width: 8rem;
 }
 
-.button:hover,
-.button:focus {
+.button:hover {
   outline: none;
   background: white;
   box-shadow: 0 0 0 3px #eee;

@@ -1,11 +1,20 @@
 import { Data } from "../../FakeApi";
+import { IDataProducts } from "../../Interfaces";
 import { useUi } from "../../UiContext";
 import styles from "./FilterCategory.module.css";
 
 const FilterCtegory = () => {
   const { setProdutos, produtos } = useUi();
 
-  const categorias = ["todos", "bermuda", "calça", "jaqueta", "vestido"];
+  const categorias = [
+    "todos",
+    "bermuda",
+    "calça",
+    "jaqueta",
+    "vestido",
+    "moletom",
+    "camiseta",
+  ];
 
   const handleCategoriaChange = (e: any) => {
     if (e.target.value === "todos") {
@@ -18,7 +27,7 @@ const FilterCtegory = () => {
       setProdutos(filter);
     }
   };
-  console.log(produtos);
+
   return (
     <div>
       <h3>Categorias</h3>
