@@ -2,6 +2,7 @@ import styles from "./ProfilePage.module.css";
 import Header from "../../Components/Header/Header";
 import Sidenav from "../../Components/Sidenav/Sidenav";
 import React from "react";
+import ProfileUser from "../../Components/Profile/ProfileUser";
 
 const ProfilePage = () => {
   const [showSection, setShowSection] = React.useState("usuario");
@@ -15,7 +16,7 @@ const ProfilePage = () => {
           <div className={styles.profileInfo}>
             {showSection === "usuario" ? (
               <div>
-                <h1>{showSection}</h1>
+                <ProfileUser />
               </div>
             ) : (
               <></>

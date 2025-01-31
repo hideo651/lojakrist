@@ -22,3 +22,11 @@ export interface IDataComments {
   data: string;
   img: string;
 }
+
+export interface IProfileForm {
+  error: string;
+  nome: string;
+  sobrenome: string;
+  email: string;
+  telefone: string;
+}
