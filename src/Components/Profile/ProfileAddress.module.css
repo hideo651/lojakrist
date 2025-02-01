@@ -1,0 +1,31 @@
+.addBtn {
+  width: 350px;
+  margin-bottom: 30px;
+}
+
+.addBtn button {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.addressList li {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.btn button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100px;
+}
+
+.btn button:nth-child(1) {
+  margin-bottom: 20px;
+}

@@ -1,0 +1,36 @@
+.nomes {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 1fr;
+  font-size: 1.5rem;
+}
+
+.section ul {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  border-top: 1px solid #d3d3d3;
+  padding-top: 30px;
+}
+
+.section ul li {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 1fr;
+  border-bottom: 1px solid #d3d3d3;
+  padding-bottom: 30px;
+}
+
+.foto {
+  height: 120px;
+  width: 100px;
+}
+
+.foto img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.intro {
+  display: flex;
+  gap: 30px;
+}

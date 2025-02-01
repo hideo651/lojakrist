@@ -3,6 +3,7 @@ export interface IDataCartProduct {
   cor: string;
   tamanho: string;
   nome: string;
+  img: string;
 }
 
 export interface IDataProducts {
@@ -29,4 +30,16 @@ export interface IProfileForm {
   sobrenome: string;
   email: string;
   telefone: string;
+}
+
+export interface IDataAddres {
+  id: number;
+  nome: string;
+  rua: string;
+  telefone: string;
+  bairro: string;
+  numero: number;
+  cidade: string;
+  estado: string;
+  cep: string;
 }

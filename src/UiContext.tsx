@@ -2,7 +2,13 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Comments, Data } from "./FakeApi";
-import { IDataCartProduct, IDataComments, IDataProducts } from "./Interfaces";
+import {
+  IDataAddres,
+  IDataCartProduct,
+  IDataComments,
+  IDataProducts,
+  IProfileForm,
+} from "./Interfaces";
 
 interface IUiContext {
   contagem: number;
@@ -22,6 +28,11 @@ interface IUiContext {
   comentarios: IDataComments[];
   setComentarios: React.Dispatch<React.SetStateAction<IDataComments[]>>;
   addComment: (data: IDataComments) => void;
+  editProfile: (data: IProfileForm) => void;
+  endereco: IDataAddres[];
+  setEndereco: React.Dispatch<React.SetStateAction<IDataAddres[]>>;
+  deleteAddress: (data: number) => void;
+  editAddress: (data: number) => void;
 }
 
 interface IDataLogin {
@@ -57,11 +68,41 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
   const [produtos, setProdutos] = React.useState(Data);
   const [comentarios, setComentarios] = React.useState(Comments);
   const [carrinho, setCarrinho] = React.useState<IDataCartProduct[]>([]);
+  const [endereco, setEndereco] = React.useState<IDataAddres[]>([
+    {
+      nome: "José",
+      id: 1,
+      rua: "Avenida Paulista",
+      bairro: "Bela Vista",
+      numero: 1578,
+      cep: "01310-200",
+      cidade: "São Paulo",
+      estado: "SP",
+      telefone: "(11) 987234765",
+    },
+    {
+      nome: "Luna",
+      id: 2,
+      rua: "Rua das Flores",
+      bairro: "Centro",
+      numero: 120,
+      cep: "80020-250",
+      cidade: "Curitiba",
+      estado: "PR",
+      telefone: "(11) 987234765",
+    },
+  ]);
 
   const navigate = useNavigate();
 
   const userLogin = (data: IDataLogin) => {
     const user: IDataRegister = JSON.parse(localStorage.getItem("@user")!);
+    const cart = JSON.parse(localStorage.getItem("@cart")!);
+
+    if (cart !== null) {
+      const data = JSON.parse(localStorage.getItem("@cart")!);
+      setCarrinho(data);
+    }
 
     setLoading(true);
 
@@ -97,10 +138,9 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
   };
 
   const userLogout = () => {
-    console.log("clicou");
+    navigate("/");
     localStorage.removeItem("@token");
     setData({ name: "", lastname: "", email: "", password: "" });
-    navigate("/");
   };
 
   const addProduct = (data: IDataCartProduct) => {
@@ -121,9 +161,11 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
       updatedCart[productIndex] = updatedProduct;
 
       setCarrinho(updatedCart);
+      localStorage.setItem("@cart", JSON.stringify(updatedCart));
     } else {
       // Se o produto não existir, adiciona ao carrinho
       setCarrinho([...carrinho, data]);
+      localStorage.setItem("@cart", JSON.stringify(data));
     }
   };
 
@@ -132,9 +174,27 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
     setComentarios([...comentarios, data]);
   };
 
+  const editProfile = (data: IProfileForm) => {
+    console.log(data);
+  };
+
+  const editAddress = (data: number) => {
+    console.log(data);
+  };
+
+  const deleteAddress = (data: number) => {
+    const formatAddress = endereco.filter((e) => e.id !== data);
+    setEndereco(formatAddress);
+  };
+
   React.useEffect(() => {
     async function autoLogin() {
       const token = localStorage.getItem("@token");
+      const cart = JSON.parse(localStorage.getItem("@cart")!);
+
+      if (cart) {
+        setCarrinho(cart);
+      }
 
       if (token) {
         setLogin(true);
@@ -167,6 +227,11 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
         comentarios,
         setComentarios,
         addComment,
+        editProfile,
+        endereco,
+        setEndereco,
+        deleteAddress,
+        editAddress,
       }}
     >
       {children}

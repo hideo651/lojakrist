@@ -7,6 +7,7 @@ import Input from "../Input/Input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { IProfileForm } from "../../Interfaces";
 
 const profileSchema = z.object({
   nome: z.string().min(1, { message: "Digite uma senha válida" }),
@@ -15,16 +16,8 @@ const profileSchema = z.object({
   telefone: z.string().min(1, { message: "Digite uma senha válida" }),
 });
 
-interface IProfileForm {
-  error: string;
-  nome: string;
-  sobrenome: string;
-  email: string;
-  telefone: string;
-}
-
 const ProfileUser = () => {
-  const { data } = useUi();
+  const { data, editProfile } = useUi();
 
   const {
     register,
@@ -49,11 +42,11 @@ const ProfileUser = () => {
   }, [data, reset]); // Sempre que `data` mudar, o formulário será atualizado
 
   const handleForm = (formData: IProfileForm) => {
-    console.log("Dados enviados:", formData);
+    editProfile(formData);
   };
 
   return (
-    <div className={styles.user}>
+    <section className={`${styles.user} animeLeft`}>
       <div className={styles.foto}>
         <img
           src="https://images.stockcake.com/public/e/2/a/e2a174ca-aa8e-4cf4-ac5a-193fdbd49b46_large/expressive-canine-portrait-stockcake.jpg"
@@ -81,7 +74,7 @@ const ProfileUser = () => {
         />
         <Input
           label="Telefone"
-          error=""
+          error={errors.telefone?.message}
           {...register("telefone")}
           type="text"
         />
@@ -90,7 +83,7 @@ const ProfileUser = () => {
           <FaEdit /> EditarPerfil
         </Button>
       </form>
-    </div>
+    </section>
   );
 };
 
