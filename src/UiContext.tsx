@@ -1,8 +1,10 @@
 import React from "react";
+import { api } from "./Services/services";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Comments, Data } from "./FakeApi";
 import {
+  IAddresEditFrom,
   IDataAddres,
   IDataCartProduct,
   IDataComments,
@@ -32,7 +34,12 @@ interface IUiContext {
   endereco: IDataAddres[];
   setEndereco: React.Dispatch<React.SetStateAction<IDataAddres[]>>;
   deleteAddress: (data: number) => void;
-  editAddress: (data: number) => void;
+  editAddress: (data: IDataAddres) => void;
+  dataEditAddress: IAddresEditFrom | null;
+  setDataEditAddress: React.Dispatch<
+    React.SetStateAction<IAddresEditFrom | null>
+  >;
+  searchCep: (data: number) => void;
 }
 
 interface IDataLogin {
@@ -92,6 +99,8 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
       telefone: "(11) 987234765",
     },
   ]);
+  const [dataEditAddress, setDataEditAddress] =
+    React.useState<IAddresEditFrom | null>(null);
 
   const navigate = useNavigate();
 
@@ -129,6 +138,7 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
 
   const userRegister = (data: IDataRegister) => {
     localStorage.setItem("@user", JSON.stringify(data));
+
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
@@ -144,7 +154,6 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
   };
 
   const addProduct = (data: IDataCartProduct) => {
-    console.log("fui chamado");
     // Verifica se o produto já existe no carrinho
     const findProduct = carrinho.find((e) => e.nome === data.nome);
     const productIndex = carrinho.findIndex((e) => e.nome === data.nome);
@@ -170,16 +179,29 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
   };
 
   const addComment = (data: IDataComments) => {
-    console.log(data);
     setComentarios([...comentarios, data]);
   };
 
   const editProfile = (data: IProfileForm) => {
-    console.log(data);
+    localStorage.setItem("@user", JSON.stringify(data));
   };
 
-  const editAddress = (data: number) => {
-    console.log(data);
+  const searchCep = async (data: number) => {
+    try {
+      const formatData = data.toString();
+      console.log(formatData);
+      const response = await api.get(`/${formatData}/json/`);
+      console.log(response.data);
+    } catch (error: any) {
+      console.log(error.response.data, "errado");
+    }
+  };
+
+  const editAddress = (data: IDataAddres) => {
+    const updateAddress = endereco.map((e) => {
+      return e.id === data.id ? data : e;
+    });
+    setEndereco(updateAddress);
   };
 
   const deleteAddress = (data: number) => {
@@ -199,6 +221,7 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
       if (token) {
         setLogin(true);
         const user: IDataRegister = JSON.parse(localStorage.getItem("@user")!);
+
         setData(user);
       } else {
         setLogin(false);
@@ -232,6 +255,9 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
         setEndereco,
         deleteAddress,
         editAddress,
+        dataEditAddress,
+        setDataEditAddress,
+        searchCep,
       }}
     >
       {children}

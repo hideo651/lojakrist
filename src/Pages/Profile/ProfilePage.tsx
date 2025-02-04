@@ -5,9 +5,13 @@ import React from "react";
 import ProfileUser from "../../Components/Profile/ProfileUser";
 import ProfileCart from "../../Components/Profile/ProfileCart";
 import ProfileAddress from "../../Components/Profile/ProfileAddress";
+import ModalAddAddress from "../../Components/Modal/ModalAddAddress";
+import { useModal } from "../../ModalContext";
 
 const ProfilePage = () => {
   const [showSection, setShowSection] = React.useState("usuario");
+  const [editModal, setEditModal] = React.useState(false);
+  const { isEditModalOpen } = useModal();
   return (
     <>
       <Header />
@@ -25,7 +29,11 @@ const ProfilePage = () => {
               <></>
             )}
             {showSection === "carrinho" ? <ProfileCart /> : <></>}
-            {showSection === "endereço" ? <ProfileAddress /> : <></>}
+            {showSection === "endereço" ? (
+              <ProfileAddress setEditModal={setEditModal} />
+            ) : (
+              <></>
+            )}
             {showSection === "cartão" ? (
               <div>
                 <h1>{showSection}</h1>
@@ -36,6 +44,11 @@ const ProfilePage = () => {
           </div>
         </div>
       </main>
+      {isEditModalOpen ? (
+        <ModalAddAddress setEditModal={setEditModal} />
+      ) : (
+        <></>
+      )}
     </>
   );
 };

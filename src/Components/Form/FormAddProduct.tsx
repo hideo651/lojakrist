@@ -41,8 +41,6 @@ const FormAddProduct: React.FC<IFormAddProductProps> = ({ product }) => {
     addProduct(data);
   }
 
-  console.log(carrinho);
-
   return (
     <form className={styles.form} onSubmit={handleSubmit(handleClick)}>
       <h3>Cores</h3>

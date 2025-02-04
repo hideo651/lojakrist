@@ -5,40 +5,32 @@ import { LuPhoneCall } from "react-icons/lu";
 import ButtonDelete from "../Button/ButtonDelete";
 import { FaRegEdit, FaRegTrashAlt } from "react-icons/fa";
 import { useUi } from "../../UiContext";
+import { IAddresEditFrom, ProfileAddressProps } from "../../Interfaces";
+import { useModal } from "../../ModalContext";
 
-const ProfileAddress = () => {
-  const { endereco, deleteAddress, editAddress } = useUi();
-  // const endereco = [
-  //   {
-  //     nome: "José",
-  //     id: 1,
-  //     rua: "Avenida Paulista",
-  //     bairro: "Bela Vista",
-  //     numero: 1578,
-  //     cep: "01310-200",
-  //     cidade: "São Paulo",
-  //     estado: "SP",
-  //     telefone: "(11) 987234765",
-  //   },
-  //   {
-  //     nome: "Luna",
-  //     id: 2,
-  //     rua: "Rua das Flores",
-  //     bairro: "Centro",
-  //     numero: 120,
-  //     cep: "80020-250",
-  //     cidade: "Curitiba",
-  //     estado: "PR",
-  //     telefone: "(11) 987234765",
-  //   },
-  // ];
+const ProfileAddress: React.FC<ProfileAddressProps> = ({ setEditModal }) => {
+  const {
+    endereco,
+    deleteAddress,
+    editAddress,
+    setDataEditAddress,
+    dataEditAddress,
+    searchCep,
+  } = useUi();
+
+  const { setIsEditModalOpen } = useModal();
 
   const handleDelete = (data: number) => {
     deleteAddress(data);
   };
 
-  const handleEdit = (data: number) => {
-    editAddress(data);
+  const handleEdit = (data: IAddresEditFrom) => {
+    setIsEditModalOpen(true);
+    setDataEditAddress(data);
+  };
+
+  const handleSearchCep = () => {
+    searchCep(17501140);
   };
 
   return (
@@ -46,7 +38,7 @@ const ProfileAddress = () => {
       {endereco.length !== 0 ? (
         <section className={`${styles.section} animeLeft`}>
           <div className={styles.addBtn}>
-            <Button>
+            <Button onClick={handleSearchCep}>
               <FaHouse /> Adicionar um novo endereço
             </Button>
           </div>
@@ -64,7 +56,7 @@ const ProfileAddress = () => {
                     <FaRegTrashAlt />
                     Deletar
                   </ButtonDelete>
-                  <Button onClick={() => handleEdit(data.id)}>
+                  <Button onClick={() => handleEdit(data)}>
                     <FaRegEdit />
                     Editar
                   </Button>
@@ -75,6 +67,9 @@ const ProfileAddress = () => {
         </section>
       ) : (
         <section className={`${styles.section} animeLeft`}>
+          <Button>
+            <FaHouse /> Adicionar um novo endereço
+          </Button>
           <h1>Nenhum endereço adicionado</h1>
         </section>
       )}

@@ -4,10 +4,7 @@ import { IoCartOutline } from "react-icons/io5";
 
 const ButtonCart = () => {
   const { carrinho } = useUi();
-  const onSubmit = () => {
-    console.log("clicado");
-    console.log(carrinho);
-  };
+  const onSubmit = () => {};
   return (
     <>
       <button className={styles.button} onClick={onSubmit}>

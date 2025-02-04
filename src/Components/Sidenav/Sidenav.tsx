@@ -19,8 +19,6 @@ const Sidenav: React.FC<IPropsSidenav> = ({ showSection, setShowSection }) => {
     setShowSection(data);
   };
 
-  console.log(showSection);
-
   return (
     <div className={styles.sidenav}>
       <div className={styles.profile}>

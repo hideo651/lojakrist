@@ -43,3 +43,19 @@ export interface IDataAddres {
   estado: string;
   cep: string;
 }
+
+export interface IAddresEditFrom {
+  id: number;
+  nome: string;
+  rua: string;
+  telefone: string;
+  bairro: string;
+  numero: number;
+  cidade: string;
+  estado: string;
+  cep: string;
+}
+
+export interface ProfileAddressProps {
+  setEditModal: React.Dispatch<React.SetStateAction<boolean>>;
+}

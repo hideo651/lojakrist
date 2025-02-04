@@ -42,8 +42,6 @@ const FormComment = () => {
       img: "https://images.stockcake.com/public/e/2/a/e2a174ca-aa8e-4cf4-ac5a-193fdbd49b46_large/expressive-canine-portrait-stockcake.jpg",
     });
     reset();
-
-    console.log(data);
   }
   return (
     <div className={styles.comentario}>
