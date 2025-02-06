@@ -1,18 +1,18 @@
-import { ProfileAddressProps } from "../../Interfaces";
+import React from "react";
+import styles from "./ModalEditAddress.module.css";
 import { useModal } from "../../ModalContext";
-import FormEditAddress from "../Form/FormEditAddress";
-import styles from "./ModalAddAddress.module.css";
+import FormAddAddress from "../Form/FormAddAddress";
 
-const ModalAddAddress: React.FC<ProfileAddressProps> = ({ setEditModal }) => {
-  const { setIsEditModalOpen } = useModal();
+const ModalAddAddress = () => {
+  const { setIsAddAddressModalOpen } = useModal();
   const handleOutsideClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (event.target === event.currentTarget) setIsEditModalOpen(false);
+    if (event.target === event.currentTarget) setIsAddAddressModalOpen(false);
   };
   return (
     <div className={styles.modal} onClick={handleOutsideClick}>
       <div className={styles.form}>
-        <h2>Editar endereço</h2>
-        <FormEditAddress />
+        <h2>Adicionar um novo Endereço</h2>
+        <FormAddAddress />
       </div>
     </div>
   );

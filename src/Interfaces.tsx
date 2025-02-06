@@ -59,3 +59,12 @@ export interface IAddresEditFrom {
 export interface ProfileAddressProps {
   setEditModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+export interface ICepInfo {
+  cep: string;
+  state: string;
+  city: string;
+  neighborhood: string;
+  street: string;
+  service: string;
+}

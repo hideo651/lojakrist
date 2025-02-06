@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { api } from "./Services/services";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Comments, Data } from "./FakeApi";
 import {
   IAddresEditFrom,
+  ICepInfo,
   IDataAddres,
   IDataCartProduct,
   IDataComments,
@@ -39,7 +40,10 @@ interface IUiContext {
   setDataEditAddress: React.Dispatch<
     React.SetStateAction<IAddresEditFrom | null>
   >;
-  searchCep: (data: number) => void;
+  searchCep: (data: string) => void;
+  cepEndereco: ICepInfo | null;
+  setCepEndereco: React.Dispatch<React.SetStateAction<ICepInfo | null>>;
+  addAddress: (data: IDataAddres) => void;
 }
 
 interface IDataLogin {
@@ -101,6 +105,8 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
   ]);
   const [dataEditAddress, setDataEditAddress] =
     React.useState<IAddresEditFrom | null>(null);
+
+  const [cepEndereco, setCepEndereco] = useState<ICepInfo | null>(null);
 
   const navigate = useNavigate();
 
@@ -186,14 +192,28 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
     localStorage.setItem("@user", JSON.stringify(data));
   };
 
-  const searchCep = async (data: number) => {
+  const searchCep = async (data: string) => {
     try {
       const formatData = data.toString();
       console.log(formatData);
-      const response = await api.get(`/${formatData}/json/`);
+      const response = await api.get(`/${formatData}`);
       console.log(response.data);
+      if (response.data.erro) {
+        toast.error("CEP não encontrado");
+      }
+      setCepEndereco(response.data);
     } catch (error: any) {
-      console.log(error.response.data, "errado");
+      toast.error("CEP não encontrado");
+
+      console.log(error.response.data);
+    }
+  };
+  const addAddress = (data: IDataAddres) => {
+    if ((endereco.length = 2)) {
+      setEndereco([...endereco, data]);
+    } else if (endereco.length > 2) {
+      const formatData = { ...data, id: 3 + Number(endereco.length) };
+      setEndereco([...endereco, formatData]);
     }
   };
 
@@ -258,6 +278,9 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
         dataEditAddress,
         setDataEditAddress,
         searchCep,
+        cepEndereco,
+        setCepEndereco,
+        addAddress,
       }}
     >
       {children}

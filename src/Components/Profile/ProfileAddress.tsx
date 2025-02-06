@@ -1,14 +1,13 @@
 import { FaHouse } from "react-icons/fa6";
 import Button from "../Button/Button";
 import styles from "./ProfileAddress.module.css";
-import { LuPhoneCall } from "react-icons/lu";
 import ButtonDelete from "../Button/ButtonDelete";
 import { FaRegEdit, FaRegTrashAlt } from "react-icons/fa";
 import { useUi } from "../../UiContext";
-import { IAddresEditFrom, ProfileAddressProps } from "../../Interfaces";
+import { IAddresEditFrom } from "../../Interfaces";
 import { useModal } from "../../ModalContext";
 
-const ProfileAddress: React.FC<ProfileAddressProps> = ({ setEditModal }) => {
+const ProfileAddress = () => {
   const {
     endereco,
     deleteAddress,
@@ -18,7 +17,7 @@ const ProfileAddress: React.FC<ProfileAddressProps> = ({ setEditModal }) => {
     searchCep,
   } = useUi();
 
-  const { setIsEditModalOpen } = useModal();
+  const { setIsEditModalOpen, setIsAddAddressModalOpen } = useModal();
 
   const handleDelete = (data: number) => {
     deleteAddress(data);
@@ -30,7 +29,7 @@ const ProfileAddress: React.FC<ProfileAddressProps> = ({ setEditModal }) => {
   };
 
   const handleSearchCep = () => {
-    searchCep(17501140);
+    setIsAddAddressModalOpen(true);
   };
 
   return (
