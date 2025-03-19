@@ -13,8 +13,6 @@
 }
 
 .section ul li {
-  display: grid;
-  grid-template-columns: 3fr 1fr 1fr 1fr;
   border-bottom: 1px solid #d3d3d3;
   padding-bottom: 30px;
 }
@@ -31,6 +29,25 @@
 }
 
 .intro {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
+  align-items: center;
+}
+
+.amount {
   display: flex;
-  gap: 30px;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 50px;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.amount button {
+  padding: 0 10px 0 10px;
+  cursor: pointer;
+  border: none;
+  background: white;
 }

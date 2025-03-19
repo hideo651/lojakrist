@@ -58,10 +58,11 @@ interface IDataRegister {
   password: string;
 }
 
-const UiContext = React.createContext<IUiContext | null>(null);
+export const UiContext = React.createContext<IUiContext | null>(null);
 
 export const useUi = () => {
   const context = React.useContext(UiContext);
+
   if (!context) throw new Error("useContext deve estar dentro do Provider");
   return context;
 };
@@ -81,7 +82,7 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
   const [carrinho, setCarrinho] = React.useState<IDataCartProduct[]>([]);
   const [endereco, setEndereco] = React.useState<IDataAddres[]>([
     {
-      nome: "José",
+      nome: "Casa São Paulo",
       id: 1,
       rua: "Avenida Paulista",
       bairro: "Bela Vista",
@@ -92,7 +93,7 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
       telefone: "(11) 987234765",
     },
     {
-      nome: "Luna",
+      nome: "Casa Curitiba",
       id: 2,
       rua: "Rua das Flores",
       bairro: "Centro",
@@ -160,9 +161,10 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
   };
 
   const addProduct = (data: IDataCartProduct) => {
-    // Verifica se o produto já existe no carrinho
     const findProduct = carrinho.find((e) => e.nome === data.nome);
     const productIndex = carrinho.findIndex((e) => e.nome === data.nome);
+
+    console.log(findProduct);
 
     if (findProduct) {
       // Se o produto já existir, atualiza a quantidade
@@ -176,11 +178,13 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
       updatedCart[productIndex] = updatedProduct;
 
       setCarrinho(updatedCart);
-      localStorage.setItem("@cart", JSON.stringify(updatedCart));
+      localStorage.setItem("@cart", JSON.stringify(updatedCart)); // Correto
     } else {
       // Se o produto não existir, adiciona ao carrinho
-      setCarrinho([...carrinho, data]);
-      localStorage.setItem("@cart", JSON.stringify(data));
+      const newCart = [...carrinho, data]; // Atualiza o carrinho corretamente
+
+      setCarrinho(newCart);
+      localStorage.setItem("@cart", JSON.stringify(newCart)); // Salva o carrinho atualizado
     }
   };
 
@@ -209,12 +213,8 @@ export const UiContextProvider = ({ children }: React.PropsWithChildren) => {
     }
   };
   const addAddress = (data: IDataAddres) => {
-    if ((endereco.length = 2)) {
-      setEndereco([...endereco, data]);
-    } else if (endereco.length > 2) {
-      const formatData = { ...data, id: 3 + Number(endereco.length) };
-      setEndereco([...endereco, formatData]);
-    }
+    const formatData = { ...data, id: Number(endereco.length) + 1 };
+    setEndereco([...endereco, formatData]);
   };
 
   const editAddress = (data: IDataAddres) => {

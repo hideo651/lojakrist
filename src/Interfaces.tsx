@@ -4,6 +4,7 @@ export interface IDataCartProduct {
   tamanho: string;
   nome: string;
   img: string;
+  preco: number;
 }
 
 export interface IDataProducts {

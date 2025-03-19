@@ -3,4 +3,11 @@
   background: transparent;
   border: none;
   outline: none;
+  position: relative;
+}
+
+.cartList {
+  display: flex;
+  position: absolute;
+  top: 70px;
 }

@@ -28,7 +28,7 @@ const ProfileAddress = () => {
     setDataEditAddress(data);
   };
 
-  const handleSearchCep = () => {
+  const handleAddAddress = () => {
     setIsAddAddressModalOpen(true);
   };
 
@@ -37,7 +37,7 @@ const ProfileAddress = () => {
       {endereco.length !== 0 ? (
         <section className={`${styles.section} animeLeft`}>
           <div className={styles.addBtn}>
-            <Button onClick={handleSearchCep}>
+            <Button onClick={handleAddAddress}>
               <FaHouse /> Adicionar um novo endereço
             </Button>
           </div>
@@ -66,7 +66,7 @@ const ProfileAddress = () => {
         </section>
       ) : (
         <section className={`${styles.section} animeLeft`}>
-          <Button>
+          <Button onClick={handleAddAddress}>
             <FaHouse /> Adicionar um novo endereço
           </Button>
           <h1>Nenhum endereço adicionado</h1>

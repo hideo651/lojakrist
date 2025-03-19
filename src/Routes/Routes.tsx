@@ -8,6 +8,7 @@ import ForgotPage from "../Pages/Forgot/ForgotPage";
 import ProfilePage from "../Pages/Profile/ProfilePage";
 import ProtectedRoute from "../Helper/ProtectedRoute";
 import ProductPage from "../Pages/Product/ProductPage";
+import CartPage from "../Pages/Cart/CartPage";
 
 const MainRoutes = () => {
   return (
@@ -24,6 +25,14 @@ const MainRoutes = () => {
           element={
             <ProtectedRoute>
               <ProfilePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/carrinho"
+          element={
+            <ProtectedRoute>
+              <CartPage />
             </ProtectedRoute>
           }
         />

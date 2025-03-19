@@ -9,16 +9,20 @@
 }
 
 .coment {
-  width: 350px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  min-width: 350px;
   padding-bottom: 30px;
+  padding-top: 30px;
 }
 
 .comentList {
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  overflow-x: auto; /* Adiciona scroll horizontal quando necessário */
-  scroll-behavior: smooth; /* Faz o scroll ser suave */
+  overflow-x: auto;
+  scroll-behavior: smooth;
 }
 
 .usuarioFoto {

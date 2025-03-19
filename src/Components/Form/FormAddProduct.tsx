@@ -30,6 +30,7 @@ const FormAddProduct: React.FC<IFormAddProductProps> = ({ product }) => {
       tamanho: "M",
       nome: product.nome,
       img: product.img,
+      preco: product.preco,
     },
   });
 

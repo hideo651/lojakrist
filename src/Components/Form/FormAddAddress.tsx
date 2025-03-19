@@ -1,5 +1,6 @@
-import { useUi } from "../../UiContext";
 import React, { useEffect, useState } from "react";
+import { useUi } from "../../UiContext";
+import styles from "./FormAddAddress.module.css";
 import { z } from "zod";
 import Input from "../Input/Input";
 import { useForm } from "react-hook-form";
@@ -22,7 +23,7 @@ const schemaAddAddres = z.object({
 
 const FormAddAddress = () => {
   const { searchCep, cepEndereco, addAddress } = useUi();
-  const {} = useModal();
+  const { setIsAddAddressModalOpen } = useModal();
 
   const {
     register,
@@ -45,6 +46,7 @@ const FormAddAddress = () => {
 
   const handleClickCep = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    console.log(cep);
 
     if (!cep || cep.length !== 8) {
       toast.error("Digite um CEP válido com 8 números.");
@@ -52,7 +54,7 @@ const FormAddAddress = () => {
     }
 
     try {
-      searchCep(cep); // Agora passa uma string em vez de Number
+      searchCep(cep);
     } catch (error) {
       toast.error("Erro ao buscar o CEP.");
     } finally {
@@ -60,11 +62,12 @@ const FormAddAddress = () => {
   };
 
   const handleClick = (data: IDataAddres) => {
-    addAddress({ ...data, id: 3 });
+    addAddress({ ...data });
+    setIsAddAddressModalOpen(false);
   };
 
   return (
-    <form onSubmit={handleSubmit(handleClick)}>
+    <form onSubmit={handleSubmit(handleClick)} className={styles.form}>
       <Input label="Nome" {...register("nome")} error={errors.nome?.message} />
       <Input
         label="Telefone"
@@ -72,20 +75,21 @@ const FormAddAddress = () => {
         error={errors.telefone?.message}
       />
 
-      <div style={{ display: "flex", gap: "8px" }}>
-        <Input
-          label="CEP"
-          type="text"
-          error={errors.cep?.message}
-          {...register("cep")}
-          maxLength={8}
-          onInput={(e) =>
-            (e.currentTarget.value = e.currentTarget.value
-              .replace(/\D/g, "")
-              .slice(0, 8))
-          }
-        />
-        <Button onClick={handleClickCep}>Buscas</Button>
+      <Input
+        label="CEP"
+        type="text"
+        error={errors.cep?.message}
+        {...register("cep")}
+        maxLength={8}
+        onInput={(e) =>
+          (e.currentTarget.value = e.currentTarget.value
+            .replace(/\D/g, "")
+            .slice(0, 8))
+        }
+      />
+
+      <div className={styles.button}>
+        <Button onClick={handleClickCep}>Buscar endereço</Button>
       </div>
 
       <Input label="Rua" {...register("rua")} error={errors.rua?.message} />

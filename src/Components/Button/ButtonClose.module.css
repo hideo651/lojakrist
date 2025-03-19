@@ -1,0 +1,26 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: black;
+  background: transparent;
+  height: 56px;
+  cursor: pointer;
+  border-radius: 10px;
+  box-sizing: border-box;
+  transition: 0.1s;
+  border: none;
+  width: 100%;
+}
+
+.button:hover {
+  outline: none;
+
+  color: red;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
