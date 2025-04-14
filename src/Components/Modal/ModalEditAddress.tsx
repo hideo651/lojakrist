@@ -3,7 +3,7 @@ import { useModal } from "../../ModalContext";
 import FormEditAddress from "../Form/FormEditAddress";
 import styles from "./ModalEditAddress.module.css";
 
-const ModalEditAddress: React.FC<ProfileAddressProps> = () => {
+const ModalEditAddress = () => {
   const { setIsEditModalOpen } = useModal();
   const handleOutsideClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) setIsEditModalOpen(false);

@@ -13,7 +13,7 @@ const profileSchema = z.object({
   nome: z.string().min(1, { message: "Digite uma senha válida" }),
   sobrenome: z.string().min(1, { message: "Digite uma senha válida" }),
   email: z.string().email({ message: "Digite um email válido" }),
-  telefone: z.string().min(1, { message: "Digite uma senha válida" }),
+  telefone: z.string().min(1, { message: "Digite um telefone válido" }),
 });
 
 const ProfileUser = () => {

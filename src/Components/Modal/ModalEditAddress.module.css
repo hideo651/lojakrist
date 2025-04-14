@@ -10,6 +10,13 @@
   justify-content: center;
   z-index: 1000;
   padding: 2rem calc(4rem + 15px) 2rem 4rem;
+}
+
+.form {
+  background: white;
+  padding: 30px;
+  height: 650px;
+  overflow-y: auto;
   opacity: 0;
   transform: scale(0.8);
   animation: scaleUp 0.3s forwards;
@@ -20,13 +27,6 @@
     opacity: initial;
     transform: initial;
   }
-}
-
-.form {
-  background: white;
-  padding: 30px;
-  height: 650px;
-  overflow-y: auto;
 }
 
 .titulo {
