@@ -1,0 +1,27 @@
+.iconsList {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding-top: 90px;
+}
+
+.iconsList li {
+  width: 300px;
+}
+
+.iconsList p {
+  font-size: 0.875rem;
+}
+
+@media (max-width: 720px) {
+  .iconsList {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 670px) {
+  .iconsList li {
+    width: 200px;
+  }
+}

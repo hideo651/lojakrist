@@ -1,0 +1,43 @@
+.comentario {
+  margin-top: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form button {
+  width: 150px;
+}
+
+.divTexarea label {
+  font-size: 1rem;
+}
+
+.textarea {
+  width: 100%;
+  height: 200px;
+  font-size: 1rem;
+  padding: 10px;
+  background: #eee;
+  border: 1px solid #eee;
+  border-radius: 0.4rem;
+  transition: 0.2s;
+  font-family: "Jost", sans-serif;
+}
+
+.textarea:focus,
+.textarea:hover {
+  outline: none;
+
+  background: white;
+  box-shadow: 0 0 0 3px #eee;
+}
+
+.error {
+  color: #f31;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}

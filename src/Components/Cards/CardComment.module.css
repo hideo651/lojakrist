@@ -1,0 +1,23 @@
+.comentario {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  word-wrap: break-word;
+  border-block-end: 1px solid #cecaca;
+  padding-bottom: 20px;
+}
+
+.img {
+  width: 50px;
+}
+
+.img img {
+  border-radius: 50%;
+}
+
+.comentarioNome {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  align-items: center;
+}

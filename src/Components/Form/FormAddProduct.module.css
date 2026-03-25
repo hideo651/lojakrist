@@ -1,0 +1,68 @@
+.form h3 {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.colorList {
+  display: flex;
+  gap: 10px;
+}
+
+.colorList button {
+  cursor: pointer;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+}
+
+.focusCor {
+  box-shadow: 0 2px 5px rgba(13, 13, 13, 1);
+}
+.tamanhoList {
+  display: flex;
+  gap: 10px;
+}
+
+.tamanhoList button {
+  display: inline-block;
+  background: white;
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  line-height: 45px;
+  border: 2px solid black;
+  border-radius: 8px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.tamanhoList button:hover {
+  background: black;
+  color: white;
+}
+.addCard {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  width: 325px;
+  align-items: center;
+}
+
+.amount {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 50px;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.amount button {
+  padding: 0 10px 0 10px;
+  cursor: pointer;
+  border: none;
+  background: white;
+}
